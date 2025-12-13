@@ -1,0 +1,73 @@
+ddl
+dml- data manipulation language
+it is used to deal with the values of an table
+
+create database day3;
+use day3;
+create table products (id int, name varchar(20),price
+                                      varchar(20));
+
+insert 
+it is used to insert the rows (single or multiple) into
+a table
+
+syntax
+INSERT INTO tname (col1,col2, col3) 
+                             values (val1,val2 val3);
+
+ex 
+for single row
+insert into products (id , name ,price) 
+                    values (1, 'laptop','$999.99');
+
+for single row single column
+insert into products ( name ) 
+                    values ('laptop');
+
+for multiple rows
+insert into products (id , name ,price)
+       values (2, 'smartphone','$559.99'), 
+                         (3,'earbuds','$99');
+
+
+update 
+it is used to modify the existing values in a table
+
+update tname set colname='value'   where refcol=value;
+
+ex 
+UPDATE products SET name='charger' WHERE id=5
+UPDATE products SET price="$99" WHERE id=5;
+UPDATE products SET id=5 where name='desktop';
+
+delete
+it is used to delete a specific row in a table
+
+syntax
+delete from tbname where refcol=value
+
+ex
+delete from products where id=1;
+delete from products where name='charger';
+
+ommiting the where condtion in delete --it will behave like
+a truncate
+delete from products;
+
+dql - data query language
+it is used to retrieve  the data(table) from a database
+
+syntax
+select * from tname;
+select col1 ,col2 from tname;
+
+ex
+select * from products;
+select name ,price from products;
+
+aliasing- giving a temp name for a column field
+                                while retrieving
+select name as product_names,price from products;
+
+
+

@@ -1,0 +1,74 @@
+Database 
+It is a collection of structured or unstructured data in a format that can be easily accessed digitally and controlled by a dbms
+DBMS (Database Management System)
+A DBMS is a software used to create, manage, and operate databases by providing tools for data storage, retrieval, and security.
+
+Types of databases
+1)  Relational databases:- it is a database where the data is stored in tables in a structured format
+     Ex:- mysql , postgresql, oracle database
+2) Non-relational databases:- it is a database where the data is stored in unstructured way
+ such as documents, key-value pairs, graphs, or wide-column stores.
+     Ex:- mongodb, no sql, neo4
+
+Relational Database: A collection of related tables.
+Table:  collection of rows and columns (like an Excel sheet).
+Column (Field):  collection of field names
+A single attribute of the table.
+Example: id, name, branch, age
+Row (Record):collection of field values
+ One complete set of related data.
+Example (student): 1, "Amit", "CS", 20
+
+Database can be deployed in two way
+On premises—deployed in the server which is managed by client
+On  cloud--- deployed in the server where data is managed by cloud service providers
+
+Sql 
+Sql is statically typed programming language used to interact with relational database
+Used to query and retrieve data from the  database
+  => SQL stands for structured query language.
+  => it is a language used to communicate with the mysql.
+  => user communicates with mysql by sending commands called queries.
+  => a query is a command/request/question submitted to mysql
+       to perform some operation over db. 
+
+  => sql commands are categorized into 5 sub languages.   
+        1 DDL (Data Definition Lang)
+        2 DML (Data Manipulation Lang)
+        3 DQL (Data Query Lang)
+        4 DCL (Data Control Lang)
+        5 TCL  (Transaction Control Lang)
+
+how to operate mysql
+1) workbench
+2) mysql command line client
+3) mysql shell
+
+how to operate through the shell
+open mysql shell 
+\sql
+
+\c root@localhost:3306
+password- N
+
+ddl queries-data defintion language
+we can manage the structure of the
+databases, tables and users 
+
+query;-- all sql queries should end with semi colon
+
+databases related commands
+//display the all the list of databases
+show databases; or show schemas;
+
+//used to create new databases
+create database students;
+
+//select a database
+use dbname;
+
+//check the current database
+ select database();
+
+ //remove a database
+ drop database dbname;

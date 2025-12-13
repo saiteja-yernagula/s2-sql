@@ -1,0 +1,28 @@
+
+operators
+arithmetic operators
++   select sal+1000 from emp;
+-   select sal-1000 from emp;
+*  select sal*12 as yearly_sal from emp;
+/ select sal/2 as half_month_salary from emp;
+%  select 10%3 from dual;
+
+comparsion operators
+=  
+  select * from emp where job='manager';
+  select * from emp where deptno=10;
+  select * from emp where empno=7788;
+  select * from dept where loc='new york';
+!= or <>
+   select * from emp where deptno!=10;
+   select * from emp where job<>'manager';
+<
+  select * from emp where sal<2000;
+>
+ select * from emp where sal>2000;
+<=
+  select * from emp where sal<=2000;
+>=
+ select * from emp where sal>=2000;
+
+

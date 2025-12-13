@@ -1,0 +1,183 @@
+
+database
+dbms 
+types of dbms
+sql
+
+how to operate mysql through shell
+\sql
+\c root@localhost:3306
+password -n
+
+related to databases
+
+show databases;
+create database dbname;
+use dbname;
+select database();
+drop database dbname;
+
+datatypes
+1) varchar
+ it is used to define the variable length string
+
+syntax- size- max no of characters
+varchar(size)
+
+Ex
+city varchar(20)
+
+use case: 
+if varchar(5) and value is pune -now for the remaining 
+slots it wont occupy space
+
+2) char
+it is used to define the fixed length string
+syntax- size- fixed length of characters
+char(size)
+
+Ex
+pincode char(6)
+
+3) int
+it is used to store the whole numbers (negative and 
+positive number) and without decimals
+
+syntax
+columnname int
+
+Ex
+id int
+age int
+marks int
+
+3) decimal
+it is used to store the numbers with precision and scale
+
+syntax
+decimal(precision, scale)
+decimal(5,2)
+
+precision - total
+scale- decimal values
+
+100.10
+precision-5
+scale-2
+
+ex
+rating decimal(2,1)
+
+4) boolean - true or false
+             1    or 0
+
+syntax
+columnname boolean
+
+ex
+active boolean
+fees_status boolean
+
+5) date - it is used to store the date value in a format 
+        of yyyy-mm-dd
+
+syntax
+columnname date
+
+ex
+joining_date date
+exam_date date
+
+syntax - in a format of date + time
+last_login timestamp
+
+6) text- it is used to store large data
+ex
+content text
+description text
+
+data definition language
+it is used to manage the structure of the database
+and tables
+
+1) create- it is used to create database, table , user 
+       ,indexes and views
+2) show - it is used to display the list of tables and 
+         databases;
+3) alter - it is used to modify the tables columns and datbase
+4) drop - it is used to delete the table,
+        table columns,database,index and user
+5) truncate - it is used clear the values or data of 
+          an table but not the strucuture
+6) rename - it is used to rename tables, columns, 
+           and databases
+7) desc     description-it is used to display the 
+        structure of the table
+
+create
+syntax
+create table tablename (col1 datatype, col2 datayp, col3 dt)
+
+ex
+create table students (id int, name varchar(20), city varchar(20));
+
+
+show 
+ex
+show tables;
+
+description
+desc students;
+
+
+alter
+1) how to add a column
+alter table tname  ADD COLUMN  colname datatype;
+
+ex
+alter table students ADD COLUMN city varchar(20);
+
+2) how to modify a column datatype
+alter table tname  MODIFY COLUMN colname int
+
+ex
+alter table students  MODIFY COLUMN city varchar(30);
+
+alter table students MODIFY COLUMN phone_no  varchar(12);
+
+3) how to delete a column
+alter table tname  DROP COLUMN  colname
+
+ex
+alter table students  DROP COLUMN city;
+
+4) how to rename a column
+alter table tname RENAME COLUMN oldcolname to newcolname;
+
+ex
+alter table students RENAME COLUMN id to std_id;
+
+5) how to rename a table
+alter table tname  RENAME TO newname;
+
+ex
+alter table students  RENAME TO std;
+
+
+
+DROP
+drop table tbname;
+
+ex
+drop table std;
+
+
+truncate
+truncate table tbname;
+
+ex
+truncate table employe;
+truncate table std;
+
+
+
