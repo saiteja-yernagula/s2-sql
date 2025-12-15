@@ -1,0 +1,95 @@
+
+operators
+
+
+clauses
+it is used to filter and sort the data and limit the data
+
+1) where -we can use in select  , update and delete
+it is used to filter the records
+select * from emp where job='manager'
+
+2) distinct
+it is used to remove duplicate records in a set 
+
+select distinct(job) from emp;
+select distinct(deptno) from emp;
+
+3) order by - it is used to sort the records in asscending
+and descending order
+select * from emp order by sal;----asscending order
+select * from emp order by sal desc;----descending order
+ select * from emp order by deptno;
+ select * from emp order by empno;
+
+4) limit - it is used to restricts the no of records
+select * from emp limit 5;
+
+highest salary name in a table
+select * from emp order by sal desc limit 1;
+
+5) offset - it is used to skip the no of rows 
+select * from emp  limit 9 offset 5;
+
+2nd highest salary row in a table
+select * from emp order by sal desc limit 1 offset 1;
+
+3rd highest salary
+select * from emp order by sal desc limit 1 offset 2;
+
+shorthand
+select * from emp order by sal desc limit offsetval, limitvalue;
+select * from emp order by sal desc limit 2, 1;
+
+6) group by
+
+7) having
+
+single row function 
+it returns output for every single record
+
+multi row functions (aggregate functions)
+it return single output for multiple records
+multi row functions ignores null values
+
+sum(colname)
+select sum(sal) from emp;
+
+avg(colname)
+select avg(sal) from emp;
+
+count(colname)-
+selct count(*) from emp; //14
+select count(comm) from emp;//4--ignore null values
+
+min(colname)
+select min(sal) from emp;
+
+max(colname)
+select max(sal) from emp;
+
+multiple aggregating functions
+ select max(sal) , count(job) from emp;
+
+error -cannot mention non aggregate columns
+select ename,max(sal) , count(job) from emp;  
+
+
+group by clauses
+it is used to  group the similar values in set of values 
+it is mostly used with aggregating functions
+
+count the no of employes in each department
+select deptno,count(*) from emp group by deptno;
+
+get the max salary in every department
+select deptno,max(sal) from emp group by deptno;
+
+group by multiple columns
+select deptno,job,count(*) from emp group by deptno, job ;
+
+not valid-error
+select  name from emp group by deptno;
+note- we cannot mention non grouped columns
+
+
