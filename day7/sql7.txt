@@ -1,0 +1,36 @@
+clauses
+
+where -- distinct --orderby - limit -offset
+multi row functions- max min avg sum count
+
+group by
+select  job,count(*) from emp group
+               by job where count(*)>2;
+select  deptno,count(*) from emp
+                    group by deptno ; 
+
+having 
+it is associated with group  by 
+we can use having with aggregated function 
+after group by for applying conditions
+
+get the emp counts in a each job role who is havingl
+greater than 2 no of emps
+ select  job,count(*) from emp group 
+                   by job having count(*)>2;
+
+select deptno, max(sal) from emp 
+      group by deptno having max(sal)>2900;
+
+errors
+select deptno, max(sal) from emp group
+            by deptno where max(sal)>4000;
+
+ select job from emp group by deptno;//non grouped
+
+
+where with group by and having
+select job, count(job) from emp where sal<2000
+       group by job order by job desc limit 1;
+
+

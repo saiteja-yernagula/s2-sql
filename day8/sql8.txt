@@ -1,0 +1,57 @@
+single row functions
+it will return one result for every row
+
+strings
+1) upper -used to convert the string to the uppercase
+select upper(ename) from emp;
+
+2) lower - converts the string into lowercase
+select lower(ename) from emp;
+
+3) length- it returns the no of characters
+select length(ename) from emp;
+
+4) substr - it is used to extract a portion of 
+a string
+substr(column, starting postion, length)
+//index starts from one
+select *,substr(ename,1,2) from emp;
+
+5) concat - it is used to merge two or more columns or 
+   strings
+select concat("mr.",ename,"-", job) from emp;
+
+number functions
+ceil - it will round up a number to the next largest integer
+floor - it will round down the number
+round- it will round a number upto the nearest integer
+
+select sal, ceil(sal) , floor(sal),round(sal) from emp;
+
+abs- converts the negative into absolute
+select abs(-100) from dual;
+
+date functions
+year - it is used to extract a year from date
+select year(hiredate) from emp;
+
+month- it is used to extract a month from date
+select month(hiredate) from emp;
+
+day- it is used to extract a day from date
+select day(hiredate) from emp;
+
+select now();- it will return the current date and time
+select curdate();- it will return the current date
+
+hour()
+select hour(now());
+
+minute()
+select minute(now());
+
+second()
+select second(now());
+
+datediff - it will return the difference in a days
+select datediff(curdate(), hiredate) as days from emp;
