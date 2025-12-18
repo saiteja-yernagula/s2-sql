@@ -1,0 +1,57 @@
+Count employees in each department
+Find average salary per department
+Find maximum salary in each job
+Total salary in each department
+
+Departments having more than 4 employees
+
+Average salary by department
+     where avg salary > 2500
+
+Count employees in each 
+    department except department 30
+
+Find average salary of
+       SALESMAN in each department
+
+Count employees hired after 
+      1981 in each department
+
+select count(*) from emp where hiredate>'1981-10-10'
+     group by deptno;
+
+
+constraints are rules that are applied to the columnsf
+for data integrity
+syntax
+create table std (col datatype constraint);
+
+null
+Ensures that a column cannot have a NULL value.
+create table std (id int, name varchar(20) not null);
+
+insert into std (id,name) values (1,'john');//inserted
+insert into std (id) values (2);//it will throw the error
+insert into std (name) values ('jessy');//inserted
+
+check 
+Ensures that the values in a column meet a specified condition.
+and it also accepts null.
+create table std (id int, 
+           name varchar(20) not null, age int check(age>18));
+
+alter table std add column age int check(age>18);
+insert into std (id,name,age) values (1,'jack',25);//inserted
+insert into std (id,name,age) values (1,'jack',12);//error
+
+unique
+Ensures all values in a column are unique and allows null values.
+create table std (id int, 
+           name varchar(20), adharno int unique);
+
+truncate table std;
+alter table std add column adharno int unique;
+insert into std (id,name,age,adharno) values (1,'jack',25,123);--inserted
+insert into std (id,name,age,adharno) values (1,'jack',25,124);//inserted
+insert into std (id,name,age,adharno) values (1,'jack',25,124);//error
+insert into std (id,name,age,adharno) values (1,'jack',25,null);//inserted
