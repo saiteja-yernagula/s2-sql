@@ -1,0 +1,90 @@
+constraints
+1) not null- it wont allow null values
+2) check- we can specify a condition
+3) unique - it will take only distinct values
+4)
+default 
+Sets a default value for a column 
+if no value is specified.
+
+create table std (id int , name varchar(20)
+                  not null,company varchar(20) default "vector");
+
+insert into std (id,name ,company) values (1,'john','tcs');//tcs 
+select * from std;
+insert into std (id,name ) values (2,'jessy');//vector -default value
+select * from std;
+
+
+primary key ---> unique + not null
+ Uniquely identifies each row in a table.
+
+create table std (id int primary key , name varchar(20) not null,
+company varchar(20) default "vector");
+
+insert into std (id,name) values (1,'john');//inserted
+insert into std (id,name) values (1,'john');//error
+insert into std (id,name) values (null,'john');//error
+
+every table must contain one primary key
+
+auto_increment
+ Automatically generates a unique value for each row.
+means adds a one number for every insertion
+
+create table std (id int primary key auto_increment , name varchar(20) not null,
+company varchar(20) default "vector");
+
+insert into std1 (id,name) values (1,'john');//1
+insert into std1 (name) values ('john');//2
+insert into std1 (name) values ('john');//3
+insert into std1 (id,name) values (10,'john');//10
+insert into std1 (name) values ('john');//11
+
+by default increment value =1
+we can change using set increment
+set @@auto_increment_increment=5;
+insert into std1 (name) values ('john');//16
+insert into std1 (name) values ('john');//21
+insert into std1 (name) values ('john');//26
+
+
+foreign key
+Ensures referential integrity by linking two tables.
+Note: The referenced table should have a PRIMARY KEY.
+Foreign Key column can have duplicates and NULL values.
+Parent table: The table with a PRIMARY KEY. and foreign key 
+Child table: The table referencing the PRIMARY KEY.
+
+create table emp (deptno  int primary key, dname varchar(20));
+
+create table dept (empno int primary key auto_increment,
+ name varchar(20) not null,deptno int,
+foreign key(deptno) references emp(deptno));
+
+we cannot delete child table without deleting the parent table
+
+desc emp;//child
+desc dept;//parent
+
+insert into emp (deptno,dname) values (101,'hr'), (102,'sales');
+insert into dept (empno,name,deptno) values (1001,'sahil', 101)
+                        , (1002,'kavya', 102);
+
+//error- we cannot insert values into the parent without inserting
+in the child table
+ insert into dept (empno,name,deptno) values
+             (1003,'sahil', 103), (1004,'kavya', 104);
+
+
+
+
+
+
+
+
+
+
+
+
+
