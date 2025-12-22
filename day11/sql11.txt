@@ -1,0 +1,97 @@
+1) select count(*) from emp;
+select count(name) from emp;
+
+2) select sum(salary)  from emp;
+
+3) select avg(salary)  from emp;
+
+4) select min(salary)  from emp;
+
+5) select max(salary)  from emp;
+
+6) select count(*) from emp where did=102;
+
+7) select sum(salary) from emp where did=101;
+select sum(salary) from emp where did=101 groupby did;
+
+8) select did,avg(salary) from emp group by did;
+
+9) select did, count(*) from emp group by did;
+
+10) select did,sum(salary) from emp group by did order by sum(sal) desc;
+
+11) select gender, avg(salary) from emp group by gender;
+
+12) select did,avg(salary) from emp group by did having avg(salary)>60000;
+
+13) select count(*) from emp group by place;
+
+14) select max(sal) from emp group by did;
+
+15) select did , count(*) from emp group by did having count(*)>2;
+
+16) select did, sum(salary) from emp group by did having sum(salary)>150000;
+
+17) select did, avg(salary) from emp group by 
+         did order by avg(salary) desc limit 1;
+
+18) select gender, avg(sal) from emp 
+       group by gender having count(*)>=3;
+
+19) select name,sal from emp order by sal desc limit 1,1;
+select name,sal from emp order by sal desc limit 1 offset 1;
+
+20) select place,sum(salary) from emp group by place 
+       having avg(sal)>55000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1)find the student names who have taken python
+2)find the count of no of students in each course
+3)find the students who are training under anitha
+4)find the trainers who has maximum enrolled students
+5)find the total fees of every trainer based on total student under his course
+
+
+select e.student_id,e.enroll_id,e.course_id,s.student_name,
+c.course_name from students s 
+join enrollments e on s.student_id=e.student_id 
+join courses c on e.course_id=c.course_id where c.course_name='python';
+
+select count(*),c.course_name from students s join enrollments 
+e on s.student_id=e.student_id join courses c on e.course_id=c.course_id
+group by c.course_name;
+
+SELECT s.student_name
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+JOIN trainers t ON e.trainer_id = t.trainer_id
+WHERE t.trainer_name = 'Anitha';
+
+
+SELECT t.trainer_name, COUNT(e.student_id) 
+FROM enrollments e
+JOIN trainers t ON e.trainer_id = t.trainer_id
+GROUP BY t.trainer_name
+ORDER BY count(e.student_id)
+LIMIT 1;
+
+
+SELECT  t.trainer_name, SUM(c.fees) 
+FROM enrollments e
+JOIN trainers t ON e.trainer_id = t.trainer_id
+JOIN courses c ON e.course_id = c.course_id
+GROUP BY t.trainer_name;
