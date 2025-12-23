@@ -1,0 +1,38 @@
+1)find the student names who have taken python
+select s.student_name,c.course_name from students s 
+join enrollments e on s.student_id=e.student_id join
+courses c on c.course_id=e.course_id where c.course_name='python';
+
+2)find the count of no of students in each course name
+select c.course_name,count(*) from enrollments e join 
+courses c on c.course_id=e.course_id group by c.course_name;
+
+3)find the student names who are training under rahul
+select s.student_name,t.trainer_name from students s join
+ enrollments e on e.student_id=s.student_id  join trainers t 
+ on t.trainer_id=e.trainer_id where t.trainer_name='rahul';
+
+4)find the trainer name who has maximum enrolled students
+select t.trainer_name,count(*) from trainers t join enrollments
+ e on e.trainer_id=t.trainer_id group by t.trainer_name 
+ order by count(*) desc limit 1;
+
+5)find the total fees of every trainer based on total 
+  student under his course
+select t.trainer_name,sum(c.fee) from trainers t join enrollments
+ e on e.trainer_id=t.trainer_id join courses c on c.course_id=e.course_id
+ group by t.trainer_name;
+
+6) Find courses name with more than 1 student
+select c.course_name,count(*) from courses c join enrollments e 
+on c.course_id=e.course_id group by c.course_name having count(*)>1;
+
+7) Find students name who enrolled in more than one course
+select s.student_name,count(*) from students s join enrollments 
+e on s.student_id=e.student_id group by s.student_name having
+ count(*)>1 ;
+
+8) Find trainers who collected fees more than 20,000
+
+9) Find students who paid more than 20,000
+10) Find courses whose total collection is more than 30,000

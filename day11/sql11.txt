@@ -61,9 +61,17 @@ select name,sal from emp order by sal desc limit 1 offset 1;
 
 1)find the student names who have taken python
 2)find the count of no of students in each course
-3)find the students who are training under anitha
+3)find the student names who are training under rahul
 4)find the trainers who has maximum enrolled students
-5)find the total fees of every trainer based on total student under his course
+5)find the total fees of every trainer based on total 
+  student under his course
+
+6) Find courses name with more than 1 student
+7) Find students name who enrolled in more than one course
+8) Find trainers who collected fees more than 20,000
+9) Find students who paid more than 20,000
+10) Find courses whose total collection is more than 30,000
+
 
 
 select e.student_id,e.enroll_id,e.course_id,s.student_name,
@@ -95,3 +103,53 @@ FROM enrollments e
 JOIN trainers t ON e.trainer_id = t.trainer_id
 JOIN courses c ON e.course_id = c.course_id
 GROUP BY t.trainer_name;
+
+6) SELECT 
+    course_id,
+    COUNT(student_id) AS total_students
+FROM Enrollments
+GROUP BY course_id
+HAVING COUNT(student_id) > 1;
+
+7) SELECT 
+    student_id,
+    COUNT(course_id) AS total_courses
+FROM Enrollments
+GROUP BY student_id
+HAVING COUNT(course_id) > 1;
+
+8) SELECT 
+    student_id,
+    SUM(c.fee) AS total_paid
+FROM Enrollments e
+JOIN Courses c ON e.course_id = c.course_id
+GROUP BY student_id
+HAVING SUM(c.fee) > 20000;
+
+9) SELECT 
+    student_id,
+    SUM(c.fee) AS total_paid
+FROM Enrollments e
+JOIN Courses c ON e.course_id = c.course_id
+GROUP BY student_id
+HAVING SUM(c.fee) > 20000;
+
+10) SELECT 
+    course_id,
+    SUM(c.fee) AS total_collection
+FROM Enrollments e
+JOIN Courses c ON e.course_id = c.course_id
+GROUP BY course_id
+HAVING SUM(c.fee) > 30000;
+
+11) Display who is learning what and from whom
+ SELECT 
+    s.student_name,
+    c.course_name,
+    t.trainer_name
+FROM Enrollments e
+JOIN Students s ON e.student_id = s.student_id
+JOIN Courses c ON e.course_id = c.course_id
+JOIN Trainers t ON e.trainer_id = t.trainer_id;
+
+
