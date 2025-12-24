@@ -1,0 +1,90 @@
+types of joins
+1) inner join - The INNER JOIN keyword selects records that have 
+matching values in both tables.
+If there is no match, the rows are excluded from the result set.
+
+2) left join -
+The LEFT JOIN returns all records from the left table and
+ the matched records from the right table.
+If there is no match, NULL values will be returned 
+for the columns from the right table.
+
+syntax
+select * from lefttable l left join righttable r on l.refc=r.refc;
+
+ex 
+ select * from emp e left join dept d on e.deptno=d.deptno;
+
+3) right join
+The RIGHT JOIN returns all records from the right table and the matched records
+ from the left table.
+If there is no match, NULL values will be returned for the columns from the left table.
+
+syntax
+select * from lefttable l right join righttable r on l.refc=r.refc;
+
+ex
+select * from emp e right join dept d on e.deptno=d.deptno;
+
+4) full outer join
+Returns all rows 
+if no matched it will add null
+MySQL does not support FULL OUTER JOIN directly,
+ so we use a combination of LEFT JOIN and RIGHT JOIN with UNION.
+
+ex
+ select * from emp e left join dept d on e.deptno=d.deptno 
+ union 
+ select * from emp e right join dept d on e.deptno=d.deptno;
+
+ 5) cross join
+ The CROSS JOIN returns the Cartesian product of the two tables.
+Every row from the first table is combined with every row from the second table.
+If table1 has m rows and table2 has n rows, the result set will have m * n rows.
+It is useful for generating test data but rarely used in real-world applications.
+
+ex 
+select * from emp cross join dept;
+
+6) self join
+A SELF JOIN is when a table is joined with itself.
+This is useful when comparing rows within the same table, such as finding employees and their managers.
+Table aliases are necessary to distinguish between the two instances of the same table.
+It can be an INNER JOIN, LEFT JOIN, or RIGHT JOIN.
+
+ex
+select e1.ename, e2.ename from emp e1 join emp e2 on e1.mgr=e2.empno;
+select e1.ename, e2.ename from emp e1 left join emp e2 on e1.mgr=e2.empno;
+select e1.ename, e2.ename from emp e1 right join emp e2 on e1.mgr=e2.empno;
+
+
+
+
+
+
+
+
+inner join
+1) Students with enrolled courses
+
+LEFT JOIN
+2) All students + enrollments
+3) Students with NO enrollment
+
+RIGHT JOIN
+4) erollments +All courses
+5) Courses with NO students 
+
+ FULL JOIN
+6) All Trainers +All Enrollments
+
+
+SELF JOIN
+7) Student with their Mentor Name
+8) Students who doesn’t have a mentor
+9) Mentor with Number of Students
+
+CROSS JOIN
+10) Get employees whose salary is greater than FORD’s salary
+
+
