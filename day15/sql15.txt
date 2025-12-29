@@ -1,0 +1,61 @@
+
+inner join
+left join 
+right join 
+outer join
+cross join
+self join
+
+inner join
+1) Students with enrolled courses
+select s.student_name,c.course_name from students s join 
+enrollments e on s.student_id=e.student_id join courses c 
+on c.course_id=e.course_id;
+
+left join
+2) All students + enrollments ids
+select s.student_name,e.enroll_id from students s left
+ join enrollments e on s.student_id=e.student_id;
+
+3) Students with NO enrollment-left exclusive join
+select s.student_name,e.enroll_id from students s left
+ join enrollments e on s.student_id=e.student_id 
+ where e.enroll_id is null;
+
+right join
+4) enrollments +All courses
+select e.enroll_id, c.course_name from enrollments e
+ right join courses c on e.course_id=c.course_id;
+
+5) Courses with NO students -right exclusive
+select e.enroll_id, c.course_name from enrollments e
+ right join courses c on e.course_id=c.course_id where 
+ e.enroll_id is null;
+
+outer join
+6) All Trainers +All Enrollments
+select t.trainer_name,e.enroll_id from trainers t left join 
+enrollments e on t.trainer_id=e.trainer_id
+union
+select t.trainer_name,e.enroll_id from trainers t right join
+ enrollments e on t.trainer_id=e.trainer_id;
+
+self join
+7) Student with their Mentor Name
+select s1.student_name,s2.student_name as mentor 
+from students s1 join students s2 on 
+s1.mentor_id=s2.student_id;
+
+8) Students who doesn’t have a mentor-left exclusive
+select s1.student_name,s2.student_name as mentor 
+from students s1 left join students s2 on 
+s1.mentor_id=s2.student_id where s2.student_name is null;
+
+9) Mentor with Number of Students
+select s2.student_name, count(*)
+from students s1 join students s2 on 
+s1.mentor_id=s2.student_id group by s2.student_name;
+
+10) Get employees whose salary is greater than FORD’s salary
+select * from emp e1 cross join emp e2 where e2.ename='ford'
+ and e1.sal>e2.sal;
