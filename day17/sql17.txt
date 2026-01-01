@@ -1,0 +1,13 @@
+ Find employees earning more than the lowest salary in department 30.
+ select ename,sal from emp where sal > all ( select sal from emp where deptno=30);
+
+Find employees earning more than all salaries in department 40
+
+select ename,sal from emp where sal > all(select sal from emp where deptno=20);
+
+ Get employees along with their department’s average salary.
+
+ select avg(sal) from emp where deptno=10-3773
+ select avg(sal) from emp where deptno=80;
+
+ select ename ,sal , (select avg(sal) as average from emp where deptno=e.deptno) from emp as e;
