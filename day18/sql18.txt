@@ -1,0 +1,44 @@
+
+1 Show which course have highest course fee
+select * from courses where 
+  fee=(select max(fee) from courses);
+
+2 Show which course have lowest course fee
+select * from courses where  
+  fee=(select min(fee) from courses);
+
+3 Students living in same city as “Ramesh”
+select * from students where city=(select 
+city from students where student_name='ramesh');
+
+4 Courses cheaper than Python course
+select * from courses where fee <(select
+ fee from courses where course_name='python');
+
+5 Show students who joined a course after 
+                                1 Feb 2024
+select * from students where student_id in (select student_id from enrollments where enroll_date> '2024-02-01');
+;
+
+
+tcl - transaction control language
+
+create table std (id int,name varchar(20));
+
+ insert into std values (1,'john');
+
+ set autocommit=0;
+
+ start transaction;
+ insert into std values (2,'jessy');
+ insert into std values (3,'jack');
+ commit;
+
+ start transaction;
+ insert into std values (3,'ram');
+ insert into std values (4,'ramesh');
+ rollback;
+ select * from std;
+ 
+
+ 
