@@ -1,0 +1,39 @@
+dcl
+data control language
+it is used to manage user and their priveleges 
+
+use mysql;
+select user from user;
+
+to check the status in which user you are
+select user();
+
+how to create a new user
+create user 'jessy'@'localhost' identified by '1234';
+
+delete a user
+drop user 'john'@'localhost';
+
+//it will display all the privileges like select ,update ,drop
+show privileges;
+
+//to grant permissions to the user
+grant select ,update on types.students to 'jessy'@'localhost';
+
+//all tables access in a databse
+grant select ,update on types.* to 'jessy'@'localhost';
+
+//all databases access
+grant select ,update on *.* to 'jessy'@'localhost';
+
+//check the permissions for the user
+show grants  for 'jessy'@'localhost';
+
+//to remove permissions
+revoke update on *.* from  'jessy'@'localhost';
+
+//all permissions access
+grant all on *.* to 'jessy'@'localhost';
+
+
+
